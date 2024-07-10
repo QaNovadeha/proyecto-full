@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-
-
 jobs:
   build:
     name: Build and analyze
@@ -18,5 +16,5 @@ jobs:
       - uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: https://e151-181-205-211-170.ngrok-free.app
-          ARGS: "-X"
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+ 
