@@ -19,3 +19,4 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: https://e151-181-205-211-170.ngrok-free.app
+          ARGS: "-X"

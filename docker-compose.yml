@@ -1,8 +1,8 @@
 version: "3"
-
 services:
   sonarqube:
     image: sonarqube:community
+    restart: unless-stopped
     depends_on:
       - db
     environment:
@@ -15,27 +15,18 @@ services:
       - sonarqube_logs:/opt/sonarqube/logs
     ports:
       - "9000:9000"
-    networks:
-      - sonarnet
-
   db:
     image: postgres:16
+    restart: unless-stopped
     environment:
       POSTGRES_USER: sonar
       POSTGRES_PASSWORD: sonar
     volumes:
       - postgresql:/var/lib/postgresql
       - postgresql_data:/var/lib/postgresql/data
-    networks:
-      - sonarnet
-
 volumes:
-  sonarqube_data: {}
-  sonarqube_extensions: {}
-  sonarqube_logs: {}
-  postgresql: {}
-  postgresql_data: {}
-
-networks:
-  sonarnet:
-    driver: bridge
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
+  postgresql:
+  postgresql_data:
